@@ -1,0 +1,44 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      // Symbol은 primitive value로 유일무이하고 고유한 존재임.
+      // 기본적인 열거대상에서 제외되며, 암묵적 형변환이 불가능하다.
+      const symbol1 = Symbol();
+      const symbol2 = Symbol();
+      console.log(symbol1 === symbol2);  // false, 기본적으로 심볼은 유일무이한 존재라 비교가 되지 않음. 새로운 아이임.
+
+      const symbol3 = () => {
+        const a = Symbol('나 심볼이다');
+        return {
+          a: a
+        }
+      }
+
+      const symbol4 = symbol3();
+      console.log('here', symbol4.a);
+
+      //심볼은 리턴으로 값을 지정해줘야만 외부에서 호출할 수 있다.
+
+      const symbolObj = (() => {
+        const _privateMember1 = Symbol('private1')
+        const _privateMember2 = Symbol('private1')
+        return {
+          [_privateMember1]: '외부에서 보이긴 하는데 접근할 방법이 마땅찮다',
+          [_privateMember2]: 10,
+          privateMember1: 20,
+          privateMember2: 30
+        }
+      })()
+      console.log(symbolObj);
+
+      // 아래 방법으로는 접근이 가능하나, 번거롭고 정상적인 접근이라고 보기 어려움.
+
+    </script>
+</body>
+</html>
