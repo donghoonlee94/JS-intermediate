@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      // map은 Key, Value가 쌍으로 이루어져있고, 빈 객체 혹은 Function이 들어갈 수 있다.
+
+      // set으로 추가하기
+      const map = new Map()
+        map.set(1, 10)
+        map.set(01, 20)
+        map.set('01', 30)
+        map.set({}, 40)
+        map.set(function () { }, () => { })
+        console.log('추가하기', map)
+
+      // size 확인 및 get으로 값 확인하기.
+      // 추가, 확인, 삭제, 사이즈를 알아보는 코드
+      // 객체는 length로 확인이 불가함. Map은 가능 \
+
+      const map2 = new Map()
+      map2.set('name', '재남')
+      map2.set('age', 30)
+
+      console.log('사이즈',map2.size)
+
+      console.log(map2.get('name'))
+      console.log(map2.get('age'))
+
+      // delete로 제거 후 has로 확인하기, false, true
+      map2.delete('name')
+      console.log(map2.has('name'))
+      console.log(map2.has('age'))
+      console.log(map2.size)
+
+      map2.clear()
+      console.log(map2.has('name'))
+      console.log(map2.has('age'))
+      console.log(map2.size)        
+    </script>
+</body>
+</html>
