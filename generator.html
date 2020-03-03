@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+    <script>
+      // 제너레이터는 앞에 *을 붙임.
+      // yield에서 멈춘다. next 함수를 통해 다음 yield까지 실행할 수 있다.
+      function* generator() {
+        yield 1
+        yield 2
+        yield 3
+      }
+      const gene = generator()
+      console.dir(gene)
+
+      const arr = [1, 2, 3]
+      const map = new Map([['a', 1], ['b', 2], ['c', 3]])
+      const set = new Set([1, 2, 3])
+      const str = '이런것도 된다.'
+
+      const makeGenerator = iterable => function* () {
+        yield* iterable
+      }
+      const arrGen = makeGenerator(arr)()
+      const mapGen = makeGenerator(map)()
+      const setGen = makeGenerator(set)()
+      const strGen = makeGenerator(str)()
+
+      console.log(arrGen.next())
+      console.log(mapGen.next())
+      console.log(...setGen)
+      console.log(...strGen)
+   </script>
+</body>
+</html>
